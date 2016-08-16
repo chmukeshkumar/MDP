@@ -133,20 +133,20 @@ public class WellnessAction extends Action
         
         if(currentWeight >= BodyParams.targetWeight && currentWeight <= BodyParams.initialWeight)
         {
-//             System.out.println(" Adding new state at " + currentWeight + " for Action " + this.calories + " " + this.pa + " for " + finalWeight);
+             System.out.println(" Adding new state at " + currentWeight + " for Action " + this.calories + " " + this.pa + " for " + finalWeight);
             State newState1 = getOrCreateState(finalWeight);
             result.add(new TransitionProbability(newState1, uncertainty[0]));
             
             if(uncertainty[1] != 0)
             {
-//                System.out.println(" Adding new state at " + currentWeight + " for Action " + this.calories + " " + this.pa + " for " + (finalWeight - 2));
+                System.out.println(" Adding new state at " + currentWeight + " for Action " + this.calories + " " + this.pa + " for " + (finalWeight - 2));
                 State newState2 = getOrCreateState(finalWeight - 2);
                 result.add(new TransitionProbability(newState2, uncertainty[1]));
             }
             
             if(uncertainty[2] != 0)
             {
-//                System.out.println(" Adding new state at " + currentWeight + " for Action " + this.calories + " " + this.pa + " for " + (finalWeight + 2));
+                System.out.println(" Adding new state at " + currentWeight + " for Action " + this.calories + " " + this.pa + " for " + (finalWeight + 2));
                 State newState3 = getOrCreateState(finalWeight + 2);
                 result.add(new TransitionProbability(newState3, uncertainty[2]));
             }

@@ -47,9 +47,9 @@ public class WellnessRewardFunction implements RewardFunction {
             reward = 100 - Math.abs(diff - 2)*10;
         }
         
-        if(Math.abs(BodyParams.initialPA - pa) <= 0.2 ) {
-            reward += 25;
-        }
+//        if(Math.abs(BodyParams.initialPA - pa) <= 0.2 ) {
+//            reward += 25;
+//        }
         
 //        reward = 10 + (90/(BodyParams.targetWeight - BodyParams.initialWeight))*(currentWeight -BodyParams.initialWeight);
 //        System.out.println("RF PW" + prevWeight + " Name " + a.actionName() + " After " + currentWeight + " Reward " + reward );

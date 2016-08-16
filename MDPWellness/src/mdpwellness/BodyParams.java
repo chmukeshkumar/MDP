@@ -11,10 +11,10 @@ package mdpwellness;
  */
 public class BodyParams {
     
-    static double initialWeight = 120; // kgs
-    static double targetWeight  = 80;  // kgs
-    static double height = 1.5; // meters
-    static double age    = 28 ; // years
+    static double initialWeight = 150; // kgs
+    static double targetWeight  = 142;  // kgs
+    static double height = 1.7; // meters
+    static double age    = 32 ; // years
     static String gender = "Male";
     static double initialPA = 1.2;
 }

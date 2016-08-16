@@ -38,13 +38,18 @@ class ActionSet {
     
     public void createActionSet(double nutritionCalorieLimits[], double palLimits[])
     {
-        for(double calories = nutritionCalorieLimits[0] ; calories < nutritionCalorieLimits[1] ; calories += 250)
-        {
-            for(double pa = palLimits[0] ; pa < palLimits[1] ; pa += 0.1 )
-            {
-                new WellnessAction(calories+"-"+pa,calories, pa,this.domain,this.stateSpace);
-            }
-        }
+//        for(double calories = nutritionCalorieLimits[0] ; calories < nutritionCalorieLimits[1] ; calories += 250)
+//        {
+//            for(double pa = palLimits[0] ; pa < palLimits[1] ; pa += 0.1 )
+//            {
+//                new WellnessAction(calories+"-"+pa,calories, pa,this.domain,this.stateSpace);
+//            }
+//        }
+        new WellnessAction("1800-1.8",1800,1.8,this.domain,this.stateSpace);
+        new WellnessAction("2000-1.2",2000,1.2,this.domain,this.stateSpace);
+        new WellnessAction("1500-1.2",1500,1.2,this.domain,this.stateSpace);
+        new WellnessAction("1500-2.0",1500,2.0,this.domain,this.stateSpace);
+        
 //        new WellnessAction(minCalories+"-"+minPA,minCalories,minPA,this.domain);
 //        new WellnessAction(minCalories+"-"+maxPA,minCalories,maxPA,this.domain);
 //        

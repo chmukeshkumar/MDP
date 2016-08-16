@@ -29,7 +29,7 @@ import static mdpwellness.WellnessDomain.WEIGHT;
 
 public class MDPWellness {
     
-    private boolean divideActionSet = true;
+    private boolean divideActionSet = false;
     
     MDPWellness()
     {
@@ -40,7 +40,7 @@ public class MDPWellness {
                     WellnessDomain wellnessDomain = new WellnessDomain();
                     Domain domain = wellnessDomain.generateDomain();
                     StateSpace stateSpace = new StateSpace();
-                    stateSpace.generateStateSpace((int)BodyParams.targetWeight,(int) BodyParams.initialWeight, domain);
+                    stateSpace.generateStateSpace((int)BodyParams.targetWeight-10,(int) BodyParams.initialWeight+10, domain);
                     ActionSet      actionSet = new ActionSet(domain,stateSpace);
                     actionSet.createActionSet(i,j);
                     run(domain,i,j);
@@ -111,14 +111,32 @@ public class MDPWellness {
 //           System.out.println("###############################################");
         }
         
-        PolicyVisualizer valueIterationPolicyVisualizer = new PolicyVisualizer("Nut " + nutritionIntensityLevel + " Ex: " + exerciseIntensityLevel);
-        valueIterationPolicyVisualizer.addData(valueIterationWellnessPolicy);
-        
+        String policyName = "Nut " + nutritionIntensityLevel + " Ex: " + exerciseIntensityLevel;
+//        PolicyVisualizer valueIterationPolicyVisualizer = new PolicyVisualizer(policyName);
+//        valueIterationPolicyVisualizer.addData(valueIterationWellnessPolicy);
+        printPolicy(policyName, valueIterationWellnessPolicy);
 //        PolicyVisualizer policyIterationPolicyVisualizer = new PolicyVisualizer("Policy Iteration Wellness Policy");
 //        policyIterationPolicyVisualizer.addData(policyIterationWellnessPolicy);
 //        
 //        WellnessPolicyImplementer policyImplementer  = new WellnessPolicyImplementer();
 //        policyImplementer.implementPolicy(valueIterationWellnessPolicy);
+    }
+    
+    private void printPolicy(String name, Map<Integer,String> policy) {
+        System.out.println("======"+name+"======");
+        for(int weight = (int)BodyParams.initialWeight; weight>=BodyParams.targetWeight;weight--) {
+            String actionName = policy.get(weight);
+            if(actionName == null) {
+                continue;
+            }
+            double nutritionCalories = Double.valueOf(actionName.split("-")[0]);
+            double pal = Double.valueOf(actionName.split("-")[1]);
+            
+            int nutritionIndex = ((int)nutritionCalories - (int)ActionSet.minCalories ) / 250;
+            int palIndex       = (int) ((pal - ActionSet.minPA) / 0.1);
+            
+            System.out.println(weight+ " " +"n"+nutritionIndex+",l"+palIndex);
+        }
     }
     
     
